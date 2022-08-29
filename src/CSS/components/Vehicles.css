@@ -1,0 +1,37 @@
+.vehicles {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 3rem;
+	margin-top: 3rem;
+}
+
+.vahicle {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.vahicle__img-container {
+	display: flex;
+	height: 10rem;
+	width: 20rem;
+	background-color: black;
+	border-radius: 20px;
+}
+
+.vahicle__img-container img {
+	width: 20rem;
+	height: auto;
+	border-radius: 20px;
+}
+
+.vahicle__name {
+	padding: 2rem;
+	display: flex;
+	font-size: 2rem;
+	align-items: center;
+	color: gray;
+}
