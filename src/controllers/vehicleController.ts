@@ -64,4 +64,6 @@ export const getNeededVehicleData = (allVehiclesData: vehiclesObject) => {
 
 		allVehicles.push({ name: vehicleName, imgUrl });
 	});
+
+	return allVehicles;
 };
