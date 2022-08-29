@@ -24,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
 			}, 2000);
 
 		return () => clearTimeout(timerRef.current);
-	});
+	}, [searchedVehicle]);
 
 	return (
 		<div className='search-bar'>
