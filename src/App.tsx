@@ -22,10 +22,10 @@ const App: React.FC = () => {
 	};
 
 	return (
-		<Fragment>
+		<div className='app'>
 			<SearchBar onSearchHandler={onSearchHandler} />
-			<Vehicle vehicles={vehicles}></Vehicle>;
-		</Fragment>
+			<Vehicle vehicles={vehicles}></Vehicle>
+		</div>
 	);
 };
 
