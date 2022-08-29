@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 import SearchBar from './components/SearchBar';
-import Vehicle from './components/Vehicle';
+import Vehicles from './components/Vehicles';
 import {
 	getVehicles,
 	getNeededVehicleData,
@@ -24,7 +24,7 @@ const App: React.FC = () => {
 	return (
 		<div className='app'>
 			<SearchBar onSearchHandler={onSearchHandler} />
-			<Vehicle vehicles={vehicles}></Vehicle>
+			<Vehicles vehicles={vehicles} />
 		</div>
 	);
 };

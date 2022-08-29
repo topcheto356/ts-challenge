@@ -7,7 +7,7 @@ interface VehicleProps {
 	}[];
 }
 
-const Vehicle: React.FC<VehicleProps> = (props) => {
+const Vehicles: React.FC<VehicleProps> = (props) => {
 	return (
 		<Fragment>
 			{props.vehicles.map((vehicle, i) => {
@@ -24,4 +24,4 @@ const Vehicle: React.FC<VehicleProps> = (props) => {
 	);
 };
 
-export default Vehicle;
+export default Vehicles;
