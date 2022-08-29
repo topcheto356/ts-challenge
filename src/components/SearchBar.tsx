@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface SearchBarProps {
 	onSearchHandler: (searchedVehicle: string) => void;
@@ -10,11 +10,20 @@ interface onChangeHandlerEvent {
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
 	const [searchedVehicle, setSearchedVehicle] = useState('');
+	const timerRef: { current: any } = useRef(null);
 
 	const onChangeHandler = (event: onChangeHandlerEvent) => {
 		const keyword = event.target.value;
 		setSearchedVehicle(keyword);
 	};
+
+	useEffect(() => {
+		timerRef.current = setTimeout(() => {
+			props.onSearchHandler(searchedVehicle);
+		}, 2000);
+
+		return () => clearTimeout(timerRef.current);
+	});
 
 	return (
 		<div>
