@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { filteredVehicledData } from '../Models/vehicles.model';
 
 interface options {
 	limit?: number;
@@ -47,7 +48,7 @@ export const getVehicles = async (keyword: string, options?: options) => {
 };
 
 export const getNeededVehicleData = (allVehiclesData: vehiclesObject) => {
-	const allVehicles: { name: string; imgUrl: string }[] = [];
+	const allVehicles: filteredVehicledData[] = [];
 
 	allVehiclesData.data.forEach((vehicle) => {
 		const vehicleName = vehicle.attributes.name;

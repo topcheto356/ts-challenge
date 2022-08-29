@@ -6,11 +6,10 @@ import {
 	getVehicles,
 	getNeededVehicleData,
 } from './controllers/vehicleController';
+import { filteredVehicledData } from './Models/vehicles.model';
 
 const App: React.FC = () => {
-	const [vehicles, setVehicles] = useState<{ name: string; imgUrl: string }[]>(
-		[]
-	);
+	const [vehicles, setVehicles] = useState<filteredVehicledData[]>([]);
 
 	const onSearchHandler = async (keyword: string) => {
 		const options = { limit: 8, offset: 8 };
