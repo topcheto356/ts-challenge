@@ -3,3 +3,11 @@
 	padding-left: 1rem;
 	padding-right: 1rem;
 }
+
+.app-loading {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	color: gray;
+	font-size: 5rem;
+}

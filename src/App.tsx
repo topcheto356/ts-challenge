@@ -10,20 +10,35 @@ import { filteredVehicledData } from './Models/vehicles.model';
 
 const App: React.FC = () => {
 	const [vehicles, setVehicles] = useState<filteredVehicledData[]>([]);
+	const [loadingText, setLoadingText] = useState(
+		'Please, type a keyword in the seach bar'
+	);
 
 	const onSearchHandler = async (keyword: string) => {
+		setLoadingText('Loading, please wait');
+
 		const options = { limit: 8, offset: 8 };
 		const allVehiclesData = await getVehicles(keyword, options);
 
+		setVehicles([]);
+
 		const neededVehicleData = getNeededVehicleData(allVehiclesData);
 
-		setVehicles(neededVehicleData);
+		if (neededVehicleData) {
+			setVehicles(neededVehicleData);
+		} else {
+			setLoadingText('No vehicles found');
+		}
 	};
 
 	return (
 		<div className='app'>
 			<SearchBar onSearchHandler={onSearchHandler} />
-			<Vehicles vehicles={vehicles} />
+			{vehicles.length > 0 ? (
+				<Vehicles vehicles={vehicles} />
+			) : (
+				<div className='app-loading'>{loadingText}</div>
+			)}
 		</div>
 	);
 };

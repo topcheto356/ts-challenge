@@ -48,23 +48,28 @@ export const getVehicles = async (keyword: string, options?: options) => {
 };
 
 export const getNeededVehicleData = (allVehiclesData: vehiclesObject) => {
-	const allVehicles: filteredVehicledData[] = [];
+	try {
+		const allVehicles: filteredVehicledData[] = [];
 
-	allVehiclesData.data.forEach((vehicle) => {
-		const vehicleName = vehicle.attributes.name;
-		const imgId = vehicle.relationships.primary_image.data.id;
+		allVehiclesData.data.forEach((vehicle) => {
+			const vehicleName = vehicle.attributes.name;
+			const imgId = vehicle.relationships.primary_image.data.id;
 
-		let imgUrl: string = '';
+			let imgUrl: string = '';
 
-		for (const image of allVehiclesData.included) {
-			if (image.id === imgId && image.type === 'images') {
-				imgUrl = image.attributes.url;
-				break;
+			for (const image of allVehiclesData.included) {
+				if (image.id === imgId && image.type === 'images') {
+					imgUrl = image.attributes.url;
+					break;
+				}
 			}
-		}
 
-		allVehicles.push({ name: vehicleName, imgUrl });
-	});
+			allVehicles.push({ name: vehicleName, imgUrl });
+		});
 
-	return allVehicles;
+		if (allVehicles.length === 0) return false;
+		else return allVehicles;
+	} catch (err) {
+		return false;
+	}
 };
