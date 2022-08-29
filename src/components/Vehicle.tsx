@@ -7,13 +7,19 @@ interface VehicleProps {
 	}[];
 }
 
-const Vehicle: React.FC<VehicleProps> = () => {
+const Vehicle: React.FC<VehicleProps> = (props) => {
 	return (
 		<div>
-			<div>
-				<img src='#' alt='vehicle'></img>
-			</div>
-			<div>vehicle name</div>
+			{props.vehicles.map((vehicle, i) => {
+				return (
+					<div key={`vehicle-${i + 1}`}>
+						<div>
+							<img src={vehicle.imgUrl} alt={`vehicle-${i + 1}`}></img>
+						</div>
+						<div>{vehicle.name}</div>
+					</div>
+				);
+			})}
 		</div>
 	);
 };
