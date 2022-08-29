@@ -1,9 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
 
-function App() {
-	return <div className='App'></div>;
-}
+import SearchBar from './components/SearchBar';
+import Vehicle from './components/Vehicle';
+
+const App: React.FC = () => {
+	return (
+		<Fragment>
+			<SearchBar />
+			<Vehicle />
+		</Fragment>
+	);
+};
 
 export default App;
