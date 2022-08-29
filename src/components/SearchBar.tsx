@@ -18,9 +18,10 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
 	};
 
 	useEffect(() => {
-		timerRef.current = setTimeout(() => {
-			props.onSearchHandler(searchedVehicle);
-		}, 2000);
+		if (searchedVehicle)
+			timerRef.current = setTimeout(() => {
+				props.onSearchHandler(searchedVehicle);
+			}, 2000);
 
 		return () => clearTimeout(timerRef.current);
 	});
