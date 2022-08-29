@@ -17,7 +17,7 @@ export const getVehicles = async (keyword: string, options?: options) => {
 
 		const res = await axios.get(link);
 
-		console.log(res.data.data);
+		return res.data;
 	} catch (err) {
 		console.log(err);
 	}
