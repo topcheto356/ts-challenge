@@ -12,7 +12,9 @@ interface vehiclesObject {
 		};
 		relationships: {
 			primary_image: {
-				id: string;
+				data: {
+					id: string;
+				};
 			};
 		};
 	}[];
@@ -44,4 +46,22 @@ export const getVehicles = async (keyword: string, options?: options) => {
 	}
 };
 
-export const getNeededVehicleData = (allVehiclesData: vehiclesObject) => {};
+export const getNeededVehicleData = (allVehiclesData: vehiclesObject) => {
+	const allVehicles: { name: string; imgUrl: string }[] = [];
+
+	allVehiclesData.data.forEach((vehicle) => {
+		const vehicleName = vehicle.attributes.name;
+		const imgId = vehicle.relationships.primary_image.data.id;
+
+		let imgUrl: string = '';
+
+		for (const image of allVehiclesData.included) {
+			if (image.id === imgId && image.type === 'images') {
+				imgUrl = image.attributes.url;
+				break;
+			}
+		}
+
+		allVehicles.push({ name: vehicleName, imgUrl });
+	});
+};
