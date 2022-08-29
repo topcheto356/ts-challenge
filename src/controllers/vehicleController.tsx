@@ -5,6 +5,27 @@ interface options {
 	offset?: number;
 }
 
+interface vehiclesObject {
+	data: {
+		attributes: {
+			name: string;
+		};
+		relationships: {
+			primary_image: {
+				id: string;
+			};
+		};
+	}[];
+
+	included: {
+		id: string;
+		type: string;
+		attributes: {
+			url: string;
+		};
+	}[];
+}
+
 export const getVehicles = async (keyword: string, options?: options) => {
 	try {
 		let link: string = `https://search.outdoorsy.com/rentals?filter[keywords]=${keyword}`;
@@ -22,3 +43,5 @@ export const getVehicles = async (keyword: string, options?: options) => {
 		console.log(err);
 	}
 };
+
+export const getNeededVehicleData = (allVehiclesData: vehiclesObject) => {};
