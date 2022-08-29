@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Vehicle: React.FC = () => {
+interface VehicleProps {
+	vehicles: {
+		name: string;
+		imgUrl: string;
+	}[];
+}
+
+const Vehicle: React.FC<VehicleProps> = () => {
 	return (
 		<div>
 			<div>

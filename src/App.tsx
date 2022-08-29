@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import SearchBar from './components/SearchBar';
 import Vehicle from './components/Vehicle';
@@ -8,17 +8,23 @@ import {
 } from './controllers/vehicleController';
 
 const App: React.FC = () => {
+	const [vehicles, setVehicles] = useState<{ name: string; imgUrl: string }[]>(
+		[]
+	);
+
 	const onSearchHandler = async (keyword: string) => {
 		const options = { limit: 8, offset: 8 };
 		const allVehiclesData = await getVehicles(keyword, options);
 
-		getNeededVehicleData(allVehiclesData);
+		const neededVehicleData = getNeededVehicleData(allVehiclesData);
+
+		setVehicles(neededVehicleData);
 	};
 
 	return (
 		<Fragment>
 			<SearchBar onSearchHandler={onSearchHandler} />
-			<Vehicle />
+			<Vehicle vehicles={vehicles}></Vehicle>;
 		</Fragment>
 	);
 };
