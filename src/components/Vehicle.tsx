@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 interface VehicleProps {
 	vehicles: {
@@ -9,7 +9,7 @@ interface VehicleProps {
 
 const Vehicle: React.FC<VehicleProps> = (props) => {
 	return (
-		<div>
+		<Fragment>
 			{props.vehicles.map((vehicle, i) => {
 				return (
 					<div key={`vehicle-${i + 1}`}>
@@ -20,7 +20,7 @@ const Vehicle: React.FC<VehicleProps> = (props) => {
 					</div>
 				);
 			})}
-		</div>
+		</Fragment>
 	);
 };
 
